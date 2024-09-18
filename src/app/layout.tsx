@@ -1,16 +1,42 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import "swiper/css/bundle";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const newKansas = localFont({
+  src: [
+    {
+      path: "./fonts/NewKansas/NewKansasExtraSwash-LightItalic.woff",
+      style: "italic",
+      weight: "300",
+    },
+    {
+      path: "./fonts/NewKansas/NewKansasExtraSwash-RegularItalic.woff",
+      style: "italic",
+    },
+    {
+      path: "./fonts/NewKansas/NewKansas-Light.woff",
+      style: "normal",
+      weight: "300",
+    },
+    {
+      path: "./fonts/NewKansas/NewKansas-Regular.woff",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NewKansas/NewKansas-Medium.woff",
+      style: "normal",
+      weight: "500",
+    },
+  ],
+  variable: "--font-new-kansas",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${newKansas.variable} antialiased`}>
         {children}
       </body>
     </html>
